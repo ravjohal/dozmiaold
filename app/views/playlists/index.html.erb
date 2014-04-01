@@ -1,0 +1,30 @@
+
+<%= link_to 'Create New Playlist', new_playlist_path, :class => "btn btn-default" %>
+
+<br />
+<br />
+<div class="row">
+  <div class="col-lg-6">
+    <div>
+      <table class="table ">
+        <tbody>
+          <% if @playlists.size > 0 %>
+          <% @playlists.each do |playlist| %>
+            <tr>
+              <td><%= image_tag playlist.photo.url(:thumb) %></td>
+              <td><%= link_to playlist.name, playlist %></td>
+              <td><%= link_to 'Edit', edit_playlist_path(playlist), :class => "btn btn-default" %></td>
+              <td><%= link_to 'Delete', playlist, :class => "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+          <% else %>
+            <tr>
+              <td>
+                <h2>No Playlists Yet</h2>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>
